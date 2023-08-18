@@ -25,7 +25,13 @@ app.get("/general-info", async (req, res) => {
     const data = response.data;
     res.json(data);
   } catch (error) {
-    console.error("Error fetching data:", error);
+    // catch the 503 error and send a custom error message
+    if (error.response.status === 503) {
+      res.status(503).json({
+        error: "The game is currently being updated. Please try again later.",
+      });
+      return;
+    }
     res.status(500).json({ error: "An error occurred while fetching data" });
   }
 });
@@ -40,7 +46,13 @@ app.get("/league-standings", async (req, res) => {
     const data = response.data;
     res.json(data);
   } catch (error) {
-    console.error("Error fetching data:", error);
+    // catch the 503 error and send a custom error message
+    if (error.response.status === 503) {
+      res.status(503).json({
+        error: "The game is currently being updated. Please try again later.",
+      });
+      return;
+    }
     res.status(500).json({ error: "An error occurred while fetching data" });
   }
 });
@@ -55,7 +67,13 @@ app.get("/event-status", async (req, res) => {
     const data = response.data;
     res.json(data);
   } catch (error) {
-    console.error("Error fetching data:", error);
+    // catch the 503 error and send a custom error message
+    if (error.response.status === 503) {
+      res.status(503).json({
+        error: "The game is currently being updated. Please try again later.",
+      });
+      return;
+    }
     res.status(500).json({ error: "An error occurred while fetching data" });
   }
 });
