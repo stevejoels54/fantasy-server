@@ -11,7 +11,7 @@ app.use(express.json());
 // put some interesting intro on the root path
 app.get("/", (req, res) => {
   res.send(
-    "<h1>Welcome to the Fantasy Premier League API</h1><p>Use the following endpoints to get the data you need:</p><ul><li>/general-info</li><li>/league-standings</li><li>/event-status</li></ul>"
+    "<h1>Welcome to the Fantasy Supreme API relay</h1><p>Use the following endpoints to get the data you need:</p><ul><li>/general-info</li><li>/league-standings</li><li>/event-status</li></ul>"
   );
 });
 
