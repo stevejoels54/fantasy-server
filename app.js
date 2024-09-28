@@ -5,6 +5,8 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const API_URL = process.env.API_URL;
+
 app.use(cors());
 app.use(express.json());
 
@@ -19,9 +21,7 @@ app.get("/", (req, res) => {
 app.get("/general-info", async (req, res) => {
   try {
     // Make the API request to the Premier League Fantasy API
-    const response = await axios(
-      "https://fantasy.premierleague.com/api/bootstrap-static/"
-    );
+    const response = await axios(`${API_URL}/bootstrap-static/`);
     const data = response.data;
     res.json(data);
   } catch (error) {
@@ -41,7 +41,7 @@ app.get("/league-standings", async (req, res) => {
   try {
     // Make the API request to the Premier League Fantasy API
     const response = await axios(
-      "https://fantasy.premierleague.com/api/leagues-classic/314509/standings/"
+      `${API_URL}/leagues-classic/310509/standings/`
     );
     const data = response.data;
     res.json(data);
@@ -61,9 +61,7 @@ app.get("/league-standings", async (req, res) => {
 app.get("/event-status", async (req, res) => {
   try {
     // Make the API request to the Premier League Fantasy API
-    const response = await axios(
-      "https://fantasy.premierleague.com/api/event-status/"
-    );
+    const response = await axios(`${API_URL}/event-status/`);
     const data = response.data;
     res.json(data);
   } catch (error) {
